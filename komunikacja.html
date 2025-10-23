@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>mLokalnie — Komunikacja</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>body{font-family:Poppins,system-ui,Segoe UI,Roboto,Inter,Arial}</style>
+</head>
+<body data-page="komunikacja">
+  <header class="header">
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-badge">mL</div>
+        <div>
+          <div class="brand-title">mLokalnie</div>
+          <div class="brand-sub">Komunikacja</div>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn btn-outline" href="index.html">← Dashboard</a>
+        <a class="btn btn-primary" href="panel.html">Panel</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+      <div class="section" style="margin-bottom:20px">
+        <h2>Nowa wiadomość</h2>
+        <div class="row">
+          <input id="msg-input" class="input" placeholder="Napisz wiadomość do urzędu...">
+          <button id="msg-send" class="btn btn-blue">Wyślij</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Historia rozmowy</h2>
+        <ul id="msg-list" class="list"></ul>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="text-align:center">© 2025 mLokalnie</div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

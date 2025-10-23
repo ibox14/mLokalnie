@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>mLokalnie — Zgłoszenia</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>body{font-family:Poppins,system-ui,Segoe UI,Roboto,Inter,Arial}</style>
+</head>
+<body data-page="zgloszenia">
+  <header class="header">
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-badge">mL</div>
+        <div>
+          <div class="brand-title">mLokalnie</div>
+          <div class="brand-sub">Zgłoszenia</div>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn btn-outline" href="index.html">← Dashboard</a>
+        <a class="btn btn-primary" href="panel.html">Panel</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+      <div class="row" style="margin-bottom:20px">
+        <div class="section">
+          <h2>Dodaj nowe zgłoszenie</h2>
+          <form id="ticket-form">
+            <div class="row">
+              <div>
+                <label>Tytuł</label>
+                <input id="t-title" class="input" placeholder="Np. Uszkodzony chodnik przy ul. Lipowej">
+              </div>
+              <div>
+                <label>Kategoria</label>
+                <select id="t-cat" class="input">
+                  <option>Infrastruktura</option>
+                  <option>Oświetlenie</option>
+                  <option>Czystość</option>
+                  <option>Komunikacja</option>
+                </select>
+              </div>
+            </div>
+            <div style="margin-top:12px">
+              <label>Opis</label>
+              <textarea id="t-desc" class="input" rows="4" placeholder="Krótki opis sytuacji..."></textarea>
+            </div>
+            <div class="actions-row" style="margin-top:12px">
+              <button class="btn btn-blue" type="submit">Wyślij zgłoszenie</button>
+              <button class="btn btn-ghost" type="reset">Wyczyść</button>
+            </div>
+          </form>
+        </div>
+        <div class="section">
+          <h2>Filtry</h2>
+          <div class="kicker">Demo — do rozbudowy (status, kategoria, data)</div>
+          <div class="actions-row" style="margin-top:10px">
+            <button class="btn btn-ghost" onclick="alert('Filtry w wersji demo')">Pokaż tylko nowe</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Moje zgłoszenia</h2>
+        <ul id="tickets-list" class="list"></ul>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="text-align:center">© 2025 mLokalnie</div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

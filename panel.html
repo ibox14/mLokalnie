@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>mLokalnie — Panel mieszkańca</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>body{font-family:Poppins,system-ui,Segoe UI,Roboto,Inter,Arial}</style>
+</head>
+<body data-page="panel">
+  <header class="header">
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-badge">mL</div>
+        <div>
+          <div class="brand-title">mLokalnie</div>
+          <div class="brand-sub">Panel mieszkańca</div>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn btn-outline" href="index.html">← Dashboard</a>
+        <a class="btn btn-primary" href="#">Wyloguj</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+      <div class="section">
+        <h2>Profil</h2>
+        <div class="row" style="margin-top:10px">
+          <div>
+            <label>Imię i nazwisko</label>
+            <input class="input" value="Jan Kowalski">
+          </div>
+          <div>
+            <label>Email</label>
+            <input class="input" value="jan.kowalski@example.com">
+          </div>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <div>
+            <label>Adres</label>
+            <input class="input" value="ul. Wiosenna 5, 00-000 Miasteczko">
+          </div>
+          <div>
+            <label>Telefon</label>
+            <input class="input" value="+48 500 000 000">
+          </div>
+        </div>
+        <div class="actions-row" style="margin-top:12px">
+          <button class="btn btn-blue">Zapisz</button>
+          <button class="btn btn-ghost">Anuluj</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="text-align:center">© 2025 mLokalnie</div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

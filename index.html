@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>mLokalnie — Portal mieszkańca</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>body{font-family:Poppins,system-ui,Segoe UI,Roboto,Inter,Arial}</style>
+</head>
+<body data-page="home">
+  <header class="header">
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-badge">mL</div>
+        <div>
+          <div class="brand-title">mLokalnie</div>
+          <div class="brand-sub">Portal mieszkańca — prototyp</div>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn btn-outline" href="#">Pomoc</a>
+        <a class="btn btn-primary" href="panel.html">Zaloguj</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+      <div class="section" style="margin-bottom:16px">
+        <h2>Panel główny</h2>
+        <div class="kicker">Szybki dostęp do modułów systemu</div>
+      </div>
+      <div class="grid">
+        <a class="card" href="zgloszenia.html">
+          <div class="card-accent"></div>
+          <div class="icon">📥</div>
+          <h3>mZgłoszenia</h3>
+          <p>Zgłaszaj sprawy do urzędu i śledź ich status.</p>
+        </a>
+        <a class="card" href="komunikacja.html">
+          <div class="card-accent"></div>
+          <div class="icon">💬</div>
+          <h3>mKomunikacja</h3>
+          <p>Wiadomości urząd ↔ mieszkaniec.</p>
+        </a>
+        <a class="card" href="dokumenty.html">
+          <div class="card-accent"></div>
+          <div class="icon">📁</div>
+          <h3>mDokumenty</h3>
+          <p>Wspólne dokumenty i pliki.</p>
+        </a>
+        <a class="card" href="panel.html">
+          <div class="card-accent"></div>
+          <div class="icon">👤</div>
+          <h3>mPanel</h3>
+          <p>Dane mieszkańca i ustawienia konta.</p>
+        </a>
+        <a class="card" href="#">
+          <div class="card-accent"></div>
+          <div class="icon">📊</div>
+          <h3>mRaporty</h3>
+          <p>Podsumowania i wskaźniki (demo).</p>
+        </a>
+        <a class="card" href="#">
+          <div class="card-accent"></div>
+          <div class="icon">🧾</div>
+          <h3>mUchwały</h3>
+          <p>Rejestr uchwał rady (demo).</p>
+        </a>
+        <a class="card" href="#">
+          <div class="card-accent"></div>
+          <div class="icon">🏘️</div>
+          <h3>mWspólnota</h3>
+          <p>Kontakty i ogłoszenia (demo).</p>
+        </a>
+        <a class="card" href="#">
+          <div class="card-accent"></div>
+          <div class="icon">⚙️</div>
+          <h3>mUstawienia</h3>
+          <p>Preferencje i powiadomienia (demo).</p>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="text-align:center">© 2025 mLokalnie — statyczny prototyp (HTML/CSS/JS)</div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
