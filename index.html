@@ -1,93 +1,822 @@
 <!doctype html>
 <html lang="pl">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>mLokalnie — Portal mieszkańca</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <style>body{font-family:Poppins,system-ui,Segoe UI,Roboto,Inter,Arial}</style>
-</head>
-<body data-page="home">
-  <header class="header">
-    <div class="container nav">
-      <div class="brand">
-        <div class="brand-badge">mL</div>
-        <div>
-          <div class="brand-title">mLokalnie</div>
-          <div class="brand-sub">Portal mieszkańca — prototyp</div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>mLokalnie — portal mieszkańca</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+
+
+  </head>
+
+  <body>
+    <!-- =========================
+         HEADER / NAV
+    ========================== -->
+    <header class="header">
+      <div class="container nav">
+        <!-- Logo / Brand (klik = HOME) -->
+        <div class="brand" data-goto="home" style="cursor:pointer">
+          <div class="brand-badge">mL</div>
+          <div>
+            <div class="brand-title">mLokalnie</div>
+            <div class="brand-sub">Portal mieszkańca</div>
+          </div>
+        </div>
+
+        <!-- Menu -->
+        <div class="actions">
+          <!-- Nawigacja -->
+          <button class="btn btn-primary" id="btn-home" type="button" data-goto="home">
+            Strona główna
+          </button>
+
+          <!-- UWAGA: u Ciebie były zamienione ID/teksty — tu jest poprawnie -->
+          <button class="btn btn-outline" id="btn-contact" type="button" data-goto="contact">
+            Kontakt
+          </button>
+          <button class="btn btn-outline" id="btn-faq" type="button" data-goto="faq">
+            FAQ
+          </button>
+
+          <!-- Status użytkownika -->
+          <div class="auth-status">
+            <span id="auth-user-label" class="auth-pill">Tryb gościa</span>
+          </div>
+
+          <!-- Logowanie -->
+          <button class="btn btn-outline" id="btn-login-open" type="button" data-goto="login">
+            Zaloguj się
+          </button>
+          <button class="btn btn-outline" id="btn-logout" type="button" style="display:none;">
+            Wyloguj
+          </button>
         </div>
       </div>
-      <div class="actions">
-        <a class="btn btn-outline" href="#">Pomoc</a>
-        <a class="btn btn-primary" href="panel.html">Zaloguj</a>
+
+      
+
+      
+    </header>
+
+    <!-- =========================
+         MAIN / VIEWS
+    ========================== -->
+    <main class="main container">
+      <!-- =========================
+           HOME
+      ========================== -->
+      <section data-view="home" class="active">
+        <!-- Tytuł strony -->
+        <div class="section home-intro">
+          <h2>Strona główna</h2>
+          <div class="kicker">
+            mLokalnie – Nowoczesny portal mieszkańca umożliwiający elektroniczny kontakt z urzędem
+          </div>
+        </div>
+
+        <!-- Jak to działa -->
+        <div class="section home-how">
+          <h3 class="home-how__title">Jak działa mLokalnie?</h3>
+
+          <div class="row-3 home-how__grid">
+            <div>
+              <div class="home-how__step">1. Zgłoszenie sprawy</div>
+              <div>Mieszkaniec wypełnia prosty formularz w module <b>mZgłoszenia</b>.</div>
+            </div>
+
+            <div>
+              <div class="home-how__step">2. Obsługa przez urząd</div>
+              <div>Urzędnik analizuje zgłoszenie, zmienia status i dodaje informacje zwrotne.</div>
+            </div>
+
+            <div>
+              <div class="home-how__step">3. Informacja zwrotna</div>
+              <div>
+                Mieszkaniec może śledzić postęp realizacji sprawy na podstawie aktualnego statusu zgłoszenia.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kafelki modułów -->
+        <div class="grid grid-home">
+          <div class="card" data-goto="zgloszenia">
+            <div class="card-accent"></div>
+            <div class="icon">📥</div>
+            <h3>mZgłoszenia</h3>
+            <p>Zgłaszaj sprawy do urzędu i śledź status realizacji.</p>
+          </div>
+
+          <div class="card" data-goto="dokumenty">
+            <div class="card-accent"></div>
+            <div class="icon">📁</div>
+            <h3>mDokumenty</h3>
+            <p>Dostęp do regulaminów, uchwał, taryf i innych dokumentów urzędowych.</p>
+          </div>
+
+          <div class="card" data-goto="aktualnosci">
+            <div class="card-accent"></div>
+            <div class="icon">📰</div>
+            <h3>Aktualności</h3>
+            <p>Komunikaty dla mieszkańców: prace drogowe, przerwy w dostawach, ogłoszenia urzędu.</p>
+          </div>
+
+          <div class="card" data-goto="contact">
+            <div class="card-accent"></div>
+            <div class="icon">☎️</div>
+            <h3>Kontakt z urzędem</h3>
+            <p>Dane adresowe, godziny pracy oraz prosty formularz kontaktowy.</p>
+          </div>
+        </div>
+
+        <!-- O systemie -->
+        <div class="section section-about">
+          <h3>O systemie mLokalnie</h3>
+
+          <div class="row about-row">
+            <div>
+              <p class="kicker">
+                mLokalnie jest prototypowym systemem typu „e-Urząd”, który przenosi podstawowe procesy
+                obsługi mieszkańców do przeglądarki internetowej. Interfejs został zaprojektowany tak,
+                aby przypominał zwykłe korzystanie z serwisu WWW – bez konieczności instalowania
+                dodatkowych aplikacji.
+              </p>
+
+              <p class="about-text">
+                Z poziomu jednego portalu mieszkaniec może zgłaszać sprawy do urzędu, śledzić status
+                ich realizacji oraz przeglądać udostępnione regulaminy i dokumenty. Urzędnik natomiast
+                otrzymuje uporządkowaną listę zgłoszeń z możliwością zmiany statusu i publikowania
+                informacji zwrotnych. W docelowym wdrożeniu system mógłby zostać rozszerzony o
+                integrację z Profilem Zaufanym lub innymi krajowymi usługami identyfikacji
+                elektronicznej.
+              </p>
+
+              <div class="about-benefits">
+                <strong>Najważniejsze korzyści systemu mLokalnie:</strong>
+                <ul>
+                  <li>zgłaszanie spraw urzędowych online, 24 godziny na dobę;</li>
+                  <li>brak konieczności osobistej wizyty w urzędzie;</li>
+                  <li>uporządkowana lista spraw z historią obsługi i statusem;</li>
+                  <li>możliwość dalszej rozbudowy systemu o kolejne moduły.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="about-image">
+              <img src="obrazek.png" alt="Schemat działania systemu mLokalnie" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+           ZGŁOSZENIA
+      ========================== -->
+      <section data-view="zgloszenia">
+        <div class="breadcrumb">
+          <a href="#" data-goto="home">← Strona główna</a> / Zgłoszenia
+        </div>
+
+        <div class="row zgloszenia-top">
+          <div class="section section-wide">
+            <div class="zgl-form-head">
+  <div class="zgl-form-title">
+    <h2>Dodaj nowe zgłoszenie</h2>
+    <p class="kicker zgl-required">
+      Pola oznaczone gwiazdką <span aria-hidden="true">*</span> są wymagane.
+    </p>
+  </div>
+
+  <div id="mini-stats" class="mini-stats mini-stats-inline" title="Podsumowanie statusów">
+  <div class="chip">Nowe: <span id="mini-new">0</span></div>
+  <div class="chip">W realizacji: <span id="mini-inprogress">0</span></div>
+  <div class="chip">Zakończone: <span id="mini-done">0</span></div>
+</div>
+
+</div>
+
+<div id="login-required-note" class="login-warning" style="display:none;">
+  🔒 Aby dodać zgłoszenie, zaloguj się do systemu.
+</div>
+
+
+<form id="ticket-form">
+  <div class="row">
+    <div>
+      <label>
+        Tytuł <span class="req-star" aria-hidden="true">*</span>
+      </label>
+      <input
+        id="t-title"
+        class="input"
+        placeholder="Np. Uszkodzony chodnik przy ul. Lipowej"
+      />
+    </div>
+
+                <div>
+                    Kategoria <span class="req-star" aria-hidden="true">*</span>
+                  <select id="t-cat" class="input">
+                    <optgroup label="Infrastruktura">
+                      <option>Infrastruktura</option>
+                      <option>Drogi i chodniki</option>
+                      <option>Oświetlenie uliczne</option>
+                      <option>Kanalizacja i wodociągi</option>
+                      <option>Budynki komunalne</option>
+                    </optgroup>
+
+                    <optgroup label="Porządek i środowisko">
+                      <option>Czystość i odpady</option>
+                      <option>Dzikie wysypiska</option>
+                      <option>Ochrona środowiska</option>
+                    </optgroup>
+
+                    <optgroup label="Transport i ruch">
+                      <option>Organizacja ruchu</option>
+                      <option>Transport publiczny</option>
+                      <option>Oznakowanie drogowe</option>
+                    </optgroup>
+
+                    <optgroup label="Bezpieczeństwo">
+                      <option>Bezpieczeństwo</option>
+                      <option>Zwierzęta bezdomne</option>
+                      <option>Akty wandalizmu</option>
+                    </optgroup>
+
+                    <optgroup label="Administracyjne">
+                      <option>Sprawy urzędowe</option>
+                      <option>Podatki i opłaty lokalne</option>
+                      <option>Dokumenty i wnioski</option>
+                      <option>Dostępność</option>
+                    </optgroup>
+
+                    <optgroup label="Inne">
+                      <option>Wydarzenia lokalne</option>
+                      <option>Inicjatywy mieszkańców</option>
+                      <option>Inne</option>
+                    </optgroup>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+  <label>Lokalizacja <span class="req-star" aria-hidden="true">*</span></label>
+  <input
+    id="t-location"
+    class="input"
+    placeholder="Np. ul. Lipowa 12, przy przejściu dla pieszych"
+  />
+</div>
+
+
+<div class="field">
+  <label>
+    Opis <span class="req-star" aria-hidden="true">*</span>
+  </label>
+  <textarea
+    id="t-desc"
+    class="input"
+    rows="4"
+    placeholder="Krótki opis sytuacji (min. 40 znaków)..."
+  ></textarea>
+  <p class="field-hint" id="t-desc-hint">
+    Wpisz co najmniej 40 znaków opisu.
+  </p>
+</div>
+
+
+              <div
+                style="
+                  margin-top: 10px;
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  flex-wrap: wrap;
+                "
+              >
+                <label
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 13px;
+                    color: var(--muted);
+                    cursor: pointer;
+                  "
+                >
+                  <input type="checkbox" id="t-anon" />
+                  Zgłoszenie anonimowe
+                </label>
+                <span class="kicker" style="font-size: 12px;">
+                  (dane osobowe nie będą widoczne w zgłoszeniu)
+                </span>
+              </div>
+
+              <div style="margin-top: 16px;">
+                <button
+                  type="submit"
+                  class="btn btn-blue"
+                  id="t-submit"
+                >
+                  Wyślij zgłoszenie
+                </button>
+              </div>
+
+              <div class="xml-upload-row">
+                <div class="xml-upload">
+                  <label class="xml-file-btn">
+                    Wybierz plik XML
+                    <input
+                      id="t-xml-file"
+                      type="file"
+                      accept=".xml"
+                      hidden
+                    />
+                  </label>
+
+                  <span id="t-xml-name" class="xml-file-name">
+                    Nie wybrano pliku
+                  </span>
+
+                  <button class="btn btn-ghost" type="button" id="t-xml-import">
+                    Wczytaj XML → uzupełnij formularz
+                  </button>
+                </div>
+
+                <div id="t-xml-info" class="kicker xml-info" style="display:none;">
+                  <!-- tu JS wpisze komunikat po udanym imporcie -->
+                </div>
+                <p class="kicker xml-help">
+  Import XML służy do wypełnienia formularza danymi z pliku.
+  System weryfikuje wymagane pola (tytuł, kategoria, lokalizacja, opis).
+</p>
+
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2 id="tickets-section-title">Moje zgłoszenia</h2>
+
+
+          <div class="toolbar">
+            <div>
+              <label>Status</label><br />
+              <select id="t-filter-status" class="input" style="max-width:160px">
+                <option value="ALL">Wszystkie</option>
+                <option value="Nowe">Tylko nowe</option>
+                <option value="W realizacji">W realizacji</option>
+                <option value="Zakończone">Zakończone</option>
+              </select>
+            </div>
+
+            <div>
+              <label>Sortowanie</label><br />
+              <select id="t-sort" class="input" style="max-width:170px">
+                <option value="NEWEST">Najnowsze</option>
+                <option value="OLDEST">Najstarsze</option>
+              </select>
+            </div>
+
+            <div style="flex:1;min-width:180px">
+              <label>Szukaj</label><br />
+              <input
+                id="t-filter-search"
+                class="input"
+                placeholder="Szukaj po tytule lub opisie"
+              />
+            </div>
+          </div>
+
+          <ul id="tickets-list" class="list"></ul>
+        </div>
+      </section>
+
+
+      <!-- =========================
+           KOMUNIKACJA
+      ========================== -->
+      <section data-view="komunikacja">
+        <div class="breadcrumb"><a href="#" data-goto="home">← Strona główna</a> / Komunikacja</div>
+
+        <div class="section">
+          <h2>Nowa wiadomość</h2>
+          <div class="row">
+            <input id="msg-input" type="text" class="input" placeholder="" />
+            <button id="msg-send" class="btn btn-blue" type="button">Wyślij</button>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Historia rozmowy</h2>
+          <ul id="msg-list" class="list"></ul>
+        </div>
+      </section>
+
+<!-- =========================
+     DOKUMENTY
+========================== -->
+<section data-view="dokumenty">
+  <div class="breadcrumb">
+    <a href="#" data-goto="home">← Strona główna</a> / Dokumenty
+  </div>
+
+  <div class="section">
+    <div class="docs-head">
+      <h2 id="docs-title">Dokumenty</h2>
+      <button
+        id="docs-back"
+        class="btn btn-ghost btn-ghost-sm"
+        type="button"
+        style="display:none;"
+      >
+        ← Dokumenty
+      </button>
+    </div>
+
+    <!-- Foldery / kategorie -->
+    <div id="docs-cats" class="docs-grid"></div>
+
+    <!-- Toolbar (wyszukiwanie) -->
+    <div id="docs-toolbar" class="toolbar" style="display:none;">
+      <div style="flex:1;min-width:220px">
+        <label>Szukaj</label><br />
+        <input
+          id="docs-search"
+          class="input"
+          placeholder="Szukaj dokumentu po nazwie..."
+        />
       </div>
     </div>
-  </header>
 
-  <main class="main">
-    <div class="container">
-      <div class="section" style="margin-bottom:16px">
-        <h2>Panel główny</h2>
-        <div class="kicker">Szybki dostęp do modułów systemu</div>
+    <!-- Lista plików -->
+    <ul id="docs-list" class="list" style="display:none;"></ul>
+  </div>
+
+  <!-- Dyskretny komunikat pod kartą -->
+  <p class="docs-disclaimer">
+    Moduł w wersji demonstracyjnej – funkcja podglądu i pobierania dokumentów zostanie udostępniona w pełnej wersji systemu.
+  </p>
+</section>
+
+
+ <!-- =========================
+     LOGIN
+========================== -->
+<section data-view="login">
+  <div class="login-wrapper">
+
+    <!-- LEWA STRONA – ilustracja -->
+    <div class="login-illustration">
+      <!-- tu wstaw swój plik, np. img/login-hero.png -->
+      <img src="logowanie.png" alt="Ilustracja logowania do portalu mLokalnie" />
+    </div>
+
+    <!-- PRAWA STRONA – TWOJA DOTYCHCZASOWA KARTA -->
+    <div class="section login-box">
+      <h2>Zaloguj się do portalu mLokalnie</h2>
+      <p class="kicker login-kicker">
+  Zaloguj się, aby uzyskać dostęp do swojego konta.
+</p>
+
+
+      <form id="login-form" class="login-form">
+        <div>
+          <label for="login-login" class="label-sm">Login</label>
+          <input
+            id="login-login"
+            name="login"
+            type="text"
+            class="input"
+            placeholder="np. admin"
+            autocomplete="username"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="login-haslo" class="label-sm">Hasło</label>
+          <input
+            id="login-haslo"
+            name="haslo"
+            type="password"
+            class="input"
+            placeholder="Wpisz hasło"
+            autocomplete="current-password"
+            required
+          />
+        </div>
+
+        <details class="login-hint">
+          <summary class="login-hint__summary">
+            Konta demonstracyjne (kliknij, aby rozwinąć)
+          </summary>
+          <div class="login-hint__body">
+            <div><b>Administrator:</b> admin / admin123</div>
+            <div><b>Urzędnik:</b> urz1 / urz1pass</div>
+            <div><b>Mieszkaniec:</b> miesz1 / miesz1pass</div>
+          </div>
+        </details>
+
+        <div class="login-actions">
+          <button type="button" class="btn btn-ghost" id="login-cancel">Anuluj</button>
+          <!-- Uwaga: tu powinien być type="submit", żeby zadziałał istniejący JS -->
+          <button type="submit" class="btn btn-blue">Zaloguj</button>
+        </div>
+
+        <div id="login-error" class="login-error" style="display:none;">
+          Nieprawidłowy login lub hasło.
+        </div>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     FAQ
+========================== -->
+<section data-view="faq">
+  <div class="section">
+    <h2>FAQ – najczęstsze pytania</h2>
+    <p class="kicker">
+      Zebrane odpowiedzi na najczęściej pojawiające się pytania dotyczące korzystania z portalu
+      mLokalnie.
+    </p>
+
+    <h3 class="faq-q">1. Jak zgłosić sprawę do urzędu?</h3>
+    <p>
+      Aby zgłosić sprawę, należy przejść do modułu <strong>mZgłoszenia</strong>, wypełnić formularz
+      zgłoszeniowy (tytuł, kategoria, opis) oraz zatwierdzić zgłoszenie. Zgłoszenie zostaje zapisane w
+      systemie i przekazane do obsługi przez urząd.
+    </p>
+
+    <h3 class="faq-q">2. Czy mogę zgłosić sprawę anonimowo?</h3>
+    <p>
+      Tak. Podczas tworzenia zgłoszenia mieszkaniec może zaznaczyć opcję zgłoszenia anonimowego.
+      W takim przypadku dane zgłaszającego nie są widoczne dla pracownika urzędu.
+    </p>
+
+    <h3 class="faq-q">3. Jakie informacje widzi mieszkaniec, a jakie urzędnik?</h3>
+    <p>
+      Mieszkaniec ma dostęp wyłącznie do swoich zgłoszeń oraz informacji o ich aktualnym statusie.
+      Pracownik urzędu posiada dostęp do wszystkich zgłoszeń w systemie oraz możliwość ich obsługi i
+      zmiany statusu.
+    </p>
+
+    <h3 class="faq-q">4. Czy mogę śledzić status mojej sprawy?</h3>
+    <p>
+      Tak. Każde zgłoszenie posiada przypisany status informujący o etapie jego realizacji
+      (np. <em>Nowe</em>, <em>W realizacji</em>, <em>Zakończone</em>). Aktualny status jest widoczny
+      dla mieszkańca po zalogowaniu do systemu.
+    </p>
+
+    <h3 class="faq-q">5. Co z danymi osobowymi użytkowników?</h3>
+    <p>
+      Dane użytkowników oraz treść zgłoszeń są przechowywane w bazie danych systemu z zastosowaniem
+      mechanizmów kontroli dostępu. Dostęp do danych posiadają wyłącznie uprawnieni pracownicy urzędu.
+    </p>
+  </div>
+</section>
+
+
+
+      <!-- =========================
+     AKTUALNOŚCI
+========================== -->
+<section data-view="aktualnosci">
+  <div class="breadcrumb">
+    <a href="#" data-goto="home">← Strona główna</a> / Aktualności
+  </div>
+
+  <div class="section">
+    <h2>Aktualności</h2>
+    <p class="kicker">
+      Najważniejsze informacje i ogłoszenia publikowane przez urząd.
+    </p>
+
+    <ul id="news-list" class="list"></ul>
+
+  </div>
+</section>
+
+
+      <!-- =========================
+     KONTAKT
+========================== -->
+<section data-view="contact">
+  <div class="section">
+    <h2>Kontakt z urzędem</h2>
+    <p class="kicker">
+      Poniżej przedstawiono przykładowe dane kontaktowe jednostki samorządowej obsługującej portal mLokalnie.
+      Dane mają charakter poglądowy i mogą zostać dostosowane do konkretnego wdrożenia.
+    </p>
+
+    <div class="contact-grid">
+      <div>
+        <h3>Adres urzędu</h3>
+        <p>
+          Urząd Miasta / Gminy mLokalnie<br />
+          ul. Przykładowa 12<br />
+          00-123 Miejscowość
+        </p>
       </div>
-      <div class="grid">
-        <a class="card" href="zgloszenia.html">
-          <div class="card-accent"></div>
-          <div class="icon">📥</div>
-          <h3>mZgłoszenia</h3>
-          <p>Zgłaszaj sprawy do urzędu i śledź ich status.</p>
-        </a>
-        <a class="card" href="komunikacja.html">
-          <div class="card-accent"></div>
-          <div class="icon">💬</div>
-          <h3>mKomunikacja</h3>
-          <p>Wiadomości urząd ↔ mieszkaniec.</p>
-        </a>
-        <a class="card" href="dokumenty.html">
-          <div class="card-accent"></div>
-          <div class="icon">📁</div>
-          <h3>mDokumenty</h3>
-          <p>Wspólne dokumenty i pliki.</p>
-        </a>
-        <a class="card" href="panel.html">
-          <div class="card-accent"></div>
-          <div class="icon">👤</div>
-          <h3>mPanel</h3>
-          <p>Dane mieszkańca i ustawienia konta.</p>
-        </a>
-        <a class="card" href="#">
-          <div class="card-accent"></div>
-          <div class="icon">📊</div>
-          <h3>mRaporty</h3>
-          <p>Podsumowania i wskaźniki (demo).</p>
-        </a>
-        <a class="card" href="#">
-          <div class="card-accent"></div>
-          <div class="icon">🧾</div>
-          <h3>mUchwały</h3>
-          <p>Rejestr uchwał rady (demo).</p>
-        </a>
-        <a class="card" href="#">
-          <div class="card-accent"></div>
-          <div class="icon">🏘️</div>
-          <h3>mWspólnota</h3>
-          <p>Kontakty i ogłoszenia (demo).</p>
-        </a>
-        <a class="card" href="#">
-          <div class="card-accent"></div>
-          <div class="icon">⚙️</div>
-          <h3>mUstawienia</h3>
-          <p>Preferencje i powiadomienia (demo).</p>
-        </a>
+
+      <div>
+        <h3>Godziny pracy</h3>
+        <p>
+          Poniedziałek–Piątek: 8:00 – 16:00<br />
+          (obsługa interesantów w godzinach 8:30 – 15:30)
+        </p>
+      </div>
+
+      <div>
+        <h3>Dane kontaktowe</h3>
+        <p>
+          Telefon: (00) 123 45 67<br />
+          E-mail: <a href="mailto:kontakt@mlokalnie.pl">kontakt@mlokalnie.pl</a>
+        </p>
       </div>
     </div>
-  </main>
 
-  <footer class="footer">
-    <div class="container" style="text-align:center">© 2025 mLokalnie — statyczny prototyp (HTML/CSS/JS)</div>
-  </footer>
-  <script src="app.js"></script>
-</body>
+<div class="contact-highlight">
+  <h3>Formularz kontaktowy</h3>
+  <p class="kicker">
+    Formularz kontaktowy umożliwia przygotowanie wiadomości do urzędu.
+    
+  </p>
+
+    <form id="contact-form" class="contact-form">
+      <div>
+        <label class="label-sm">Imię i nazwisko</label>
+        <input class="input" id="c-name" placeholder="np. Jan Kowalski" />
+      </div>
+
+      <div>
+        <label class="label-sm">Adres e-mail</label>
+        <input class="input" id="c-email" placeholder="np. jan.kowalski@example.com" />
+      </div>
+
+      <div>
+        <label class="label-sm">Temat</label>
+        <input class="input" id="c-subject" placeholder="Temat wiadomości" />
+      </div>
+
+      <div>
+        <label class="label-sm">Treść wiadomości</label>
+        <textarea class="input" id="c-message" placeholder="Opisz krótko sprawę..."></textarea>
+      </div>
+
+      <div class="contact-actions">
+        <button type="reset" class="btn btn-ghost">Wyczyść</button>
+        <button type="button" class="btn btn-blue" id="c-send">Wyślij wiadomość</button>
+      </div>
+
+      <div id="c-info" class="kicker" style="display:none;">
+        Wiadomość została przygotowana. W zależności od konfiguracji systemu może zostać przekazana do urzędu.
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- =========================
+     FOOTER
+========================== -->
+<footer class="footer">
+  <div class="container footer-content">
+
+    <div>
+      © 2026 <strong>mLokalnie</strong> — prototyp systemu e-Usług
+    </div>
+
+    <div class="footer-links">
+      <a href="#" class="footer-link" data-info="privacy">Polityka prywatności</a> |
+      <a href="#" class="footer-link" data-info="rodo">Klauzula RODO</a> |
+      <a href="#" class="footer-link" data-info="access">Deklaracja dostępności</a>
+    </div>
+
+    <div class="footer-note">
+      Jest to wersja demonstracyjna przygotowana na potrzeby pracy inżynierskiej —
+      nie jest oficjalnym systemem urzędu.
+    </div>
+
+    <div class="footer-author">
+      Projekt i implementacja: <strong>Sebastian Nowak</strong> |
+      Politechnika Częstochowska | 2026
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- =========================
+     MODAL: SZCZEGÓŁY ZGŁOSZENIA
+========================== -->
+<div class="modal-backdrop" id="ticket-modal-backdrop">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="m-title"></div>
+        <div class="kicker" id="m-sub"></div>
+      </div>
+      <button class="btn btn-ghost btn-ghost-sm" id="modal-close" type="button">Zamknij</button>
+    </div>
+
+    <div class="modal-body">
+      <p id="m-desc" style="white-space:pre-line;margin-top:0"></p>
+
+      <div style="margin-top:6px">
+        <span class="chip">Status: <span id="m-status"></span></span>
+        <span class="chip">ID: <span id="m-id"></span></span>
+      </div>
+
+      <!-- ===== INFORMACJA ZWROTNA ===== -->
+      <hr class="modal-sep" />
+
+      <div class="feedback">
+        <div class="feedback-head">
+          <div class="feedback-title">Informacja zwrotna z urzędu</div>
+          <div class="kicker" id="m-feedback-meta"></div>
+        </div>
+
+        <div id="m-feedback-text" class="feedback-text">
+          Brak informacji zwrotnej.
+        </div>
+
+        <!-- EDYCJA – tylko dla urzędnika/admin (JS pokaże/ukryje) -->
+        <div id="m-feedback-editor" class="feedback-editor" style="display:none;">
+          <label class="kicker" style="display:block;margin-bottom:6px;">
+            Dodaj / zaktualizuj informację (min. 10 znaków)
+          </label>
+
+          <textarea
+            id="m-feedback-input"
+            class="input"
+            rows="4"
+            placeholder="Np. Zgłoszenie zostało przyjęte. Prace naprawcze planowane do 12.03.2026."
+          ></textarea>
+
+          <div class="feedback-actions">
+            <button
+              class="btn btn-ghost btn-ghost-sm"
+              type="button"
+              id="m-feedback-save"
+            >
+              Zapisz informację
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- ===== KONIEC INFORMACJI ZWROTNEJ ===== -->
+
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-ghost btn-ghost-sm" id="m-advance" type="button">Zmień status</button>
+      <button class="btn btn-blue btn-ghost-sm" id="m-delete" type="button">Usuń zgłoszenie</button>
+      <button class="btn btn-ghost btn-ghost-sm" id="m-xml">Pobierz XML</button>
+    </div>
+  </div>
+</div>
+
+<!-- =========================
+     UŁATWIENIA DOSTĘPU
+========================== -->
+<div id="accessibility-widget" class="access-widget">
+  <button id="access-toggle" class="access-toggle" type="button">
+  AA
+</button>
+
+
+  <div id="access-panel" class="access-panel" aria-label="Ułatwienia dostępu" hidden>
+    <div class="access-panel-title">Ułatwienia dostępu</div>
+
+    <button type="button" class="access-btn" data-action="font-inc">
+      A+
+      <span>Powiększ tekst</span>
+    </button>
+
+    <button type="button" class="access-btn" data-action="font-dec">
+      A-
+      <span>Zmniejsz tekst</span>
+    </button>
+
+    <button type="button" class="access-btn" data-action="contrast">
+      ◐
+      <span>Wysoki kontrast</span>
+    </button>
+
+    <button type="button" class="access-btn" data-action="reset">
+      ⟲
+      <span>Resetuj wygląd</span>
+    </button>
+  </div>
+</div>
+
+    <!-- JS -->
+    <script src="app.js"></script>
+  </body>
 </html>
