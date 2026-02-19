@@ -1,0 +1,1318 @@
+/* =========================================================
+   00. TOKENS / VARIABLES
+   ========================================================= */
+:root {
+  --brand: #1e40af;      /* indigo-800 */
+  --brand-600: #2563eb;  /* blue-600 */
+  --brand-50: #eff6ff;   /* blue-50 */
+  --text: #0e172c;       /* slate-900 */
+  --muted: #64748b;      /* slate-500 */
+  --card: #ffffff;
+  --bg: #f3f5f9;         /* slate-50 */
+  --success: #16a34a;
+  --warn: #f59e0b;
+  --neutral: #94a3b8;
+
+  --radius: 14px;
+  --shadow: 0 6px 24px rgba(2, 8, 23, 0.06), 0 2px 8px rgba(2, 8, 23, 0.04);
+}
+
+
+/* =========================================================
+   10. BASE / RESET
+   ========================================================= */
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+a {
+  color: var(--brand-600);
+  text-decoration: none;
+}
+
+a:hover { text-decoration: underline; }
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+
+/* =========================================================
+   20. LAYOUT (Header / Nav / Main / Footer)
+   ========================================================= */
+.header {
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: #fff;
+  padding: 18px 0;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-badge {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 700;
+  font-size: 16px;
+
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.25);
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+
+.brand-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+
+.brand-sub {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.main { padding: 28px 0; }
+
+.footer {
+  padding: 24px 0;
+  color: #475569;
+  text-align: center;
+}
+
+
+/* =========================================================
+   30. BUTTONS / UI CONTROLS
+   ========================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-primary { background: #fff; color: #1f2937; }
+.btn-outline { background: transparent; color: #fff; border: 1px solid rgba(255, 255, 255, 0.5); }
+.btn-blue    { background: var(--brand-600); color: #fff; }
+.btn-ghost   { background: #e2e8f0; }
+.btn-ghost-sm { padding: 6px 10px; font-size: 12px; }
+
+/* role pills */
+.btn-role {
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-role.active { background: #fff; color: #1e293b; }
+
+.role-label { font-size: 11px; opacity: 0.9; margin-right: 4px; }
+
+/* Auth pill (header) */
+.auth-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 7px 12px;
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 6px 18px rgba(2, 8, 23, 0.08);
+}
+
+.auth-pill::before {
+  content: "👤";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.22);
+  font-size: 12px;
+  line-height: 1;
+}
+
+/* Header buttons hover like primary */
+.header .btn-outline:hover,
+.header .btn-outline:focus-visible {
+  background: #fff;
+  color: #1f2937;
+  border-color: #fff;
+}
+
+
+/* =========================================================
+   40. COMPONENTS (Cards / Sections / Inputs / Lists / Badges)
+   ========================================================= */
+
+/* Cards */
+.card {
+  position: relative;
+  overflow: hidden;
+
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(2, 8, 23, 0.10), 0 3px 12px rgba(2, 8, 23, 0.06);
+}
+
+.card-accent {
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  background: linear-gradient(135deg, #60a5fa, #a78bfa);
+}
+
+.card .icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+
+  background: var(--brand-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 24px;
+  margin-bottom: 10px;
+
+  color: var(--brand-600);
+}
+
+.card h3 { margin: 0 0 6px 0; font-size: 18px; }
+.card p  { margin: 0; color: var(--muted); font-size: 14px; }
+
+/* Section panels */
+.section {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  margin-bottom: 18px;
+}
+
+.section h2 { margin: 0 0 8px 0; }
+
+.kicker {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* =========================
+   LOGIN (kompaktowy widok)
+   ========================= */
+
+/* LOGIN – szersza karta, ale nie na cały ekran */
+[data-view="login"] .login-box{
+  max-width: 760px;       /* było 920 – możesz dobrać pod swoje oko */
+  margin: 24px auto 0;
+  padding: 24px 28px;
+}
+
+/* Mniej odstępów w samym formularzu */
+[data-view="login"] .login-form{
+  display: grid;
+  gap: 10px;
+}
+
+/* Trochę większy odstęp pod opisem */
+[data-view="login"] .login-kicker{
+  margin: 4px 0 14px 0;
+}
+
+/* Konta demonstracyjne – działa zarówno jako <p> jak i <details> */
+[data-view="login"] .login-hint{
+  margin: 6px 0 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Jeśli używasz <details> (wariant B) */
+[data-view="login"] .login-hint__summary,
+[data-view="login"] .login-hint summary{
+  cursor: pointer;
+  user-select: none;
+  font-weight: 600;
+}
+
+[data-view="login"] .login-hint__body{
+  margin-top: 6px;
+  padding: 10px 12px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  background: #f8fafc;
+  color: #0f172a;
+  line-height: 1.5;
+}
+
+/* Przyciski – bliżej sekcji kont */
+[data-view="login"] .login-actions{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+
+.breadcrumb {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+/* ===== LOGIN: układ z ilustracją po lewej ===== */
+
+.login-wrapper {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+  align-items: flex-start;  /* było: center */
+}
+
+
+/* lewa kolumna z obrazkiem */
+.login-illustration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-illustration img {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  border-radius: 18px;      /* możesz usunąć, jeśli chcesz całkiem „płasko” */
+  box-shadow: var(--shadow); /* pasuje do reszty kart */
+  opacity: 0.98;
+}
+
+/* prawa kolumna – karta logowania, bez dodatkowego marginesu z .section */
+[data-view="login"] .login-box {
+  margin: 0;
+}
+
+/* responsywność – na telefonie chowamy ilustrację */
+@media (max-width: 900px) {
+  .login-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .login-illustration {
+    display: none;
+  }
+}
+
+/* Lists */
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 10px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.list li:last-child { border-bottom: none; }
+
+/* Inputs */
+.input,
+textarea,
+select {
+  width: 100%;
+  padding: 10px 12px;
+
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+
+  font: inherit;
+}
+
+/* Toolbars */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.toolbar label { font-size: 12px; color: var(--muted); }
+.toolbar select,
+.toolbar input { font-size: 13px; }
+
+/* Actions row (forms) */
+.actions-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 16px; /* klucz */
+}
+
+/* Chips / Pills */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 11px;
+  color: var(--muted);
+  margin-right: 8px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  border-radius: 999px;
+  padding: 4px 10px;
+
+  font-size: 11px;
+  background: #e2e8f0;
+  color: #475569;
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.badge.success { background: var(--success); }
+.badge.warn    { background: var(--warn); }
+.badge.neutral { background: var(--neutral); }
+.badge-new     { background: var(--brand-600); }
+
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 4px 8px;
+  border-radius: 999px;
+
+  background: #e0f2fe;
+  color: #0369a1;
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   50. GRIDS (General) + HOME TILES
+   ========================================================= */
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+}
+
+/* HOME gradient wrapper */
+.grid-home {
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  padding: 16px;
+  border-radius: 18px;
+}
+
+/* HOME tile sizing */
+.grid.grid-home {
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+}
+
+/* HOME cards layout fix */
+.grid-home .card {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  grid-template-areas:
+    "icon title"
+    "icon desc";
+
+  align-items: start;
+  gap: 14px 16px;
+
+  padding: 24px 28px;
+  min-height: 140px;
+
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.grid-home .card .icon { grid-area: icon; }
+.grid-home .card h3    { grid-area: title; }
+.grid-home .card p     { grid-area: desc; }
+
+.grid-home .card .icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  font-size: 28px;
+  margin: 0;
+
+  align-self: start;
+  justify-self: start;
+}
+
+.grid-home .card h3 {
+  margin: 4px 0 0 0;
+  font-size: 20px;
+  line-height: 1.15;
+}
+
+.grid-home .card p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+  max-width: 52ch;
+}
+
+@media (max-width: 720px) {
+  .grid.grid-home { grid-template-columns: 1fr; }
+
+  .grid-home .card {
+    grid-template-columns: 64px 1fr;
+    padding: 20px;
+  }
+}
+
+
+/* =========================================================
+   60. HOME HERO
+   ========================================================= */
+.hero {
+  position: relative;
+  overflow: hidden;
+
+  border-radius: 22px;
+  background: linear-gradient(135deg, #e0f2fe, #eff6ff);
+  box-shadow: var(--shadow);
+
+  padding: 22px 24px 70px 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+}
+
+.hero-left h2 { margin: 0 0 6px 0; }
+
+.hero-kicker { font-size: 14px; color: var(--muted); }
+
+.hero-badges {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.hero-badge {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #dbeafe;
+  color: #1e3a8a;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-right { justify-self: end; }
+
+.hero-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 18px;
+  padding: 14px 16px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+
+  font-size: 13px;
+  max-width: 260px;
+}
+
+.hero-card h3 { margin: 0 0 6px 0; font-size: 15px; }
+
+.hero-card-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.hero-blob {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 999px;
+
+  background: radial-gradient(circle at 30% 30%, #bfdbfe, transparent 65%);
+  right: -60px;
+  top: -40px;
+
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.home-tiles-wrapper { margin-top: -44px; }
+.home-about { margin-top: 24px; }
+
+
+/* =========================================================
+   70. VIEWS (router)
+   ========================================================= */
+[data-view] { display: none; }
+[data-view].active { display: block; }
+
+
+/* =========================================================
+   80. MODAL
+   ========================================================= */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 20;
+}
+
+.modal-backdrop.open { display: flex; }
+
+.modal {
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.40);
+
+  max-width: 520px;
+  width: 100%;
+  padding: 18px 18px 16px 18px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.modal-title { font-size: 18px; font-weight: 600; }
+.modal-body  { font-size: 14px; color: #0f172a; }
+
+.modal-footer {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+
+
+/* =========================================================
+   90. ABOUT / O SYSTEMIE
+   ========================================================= */
+.section-about { margin-top: 20px; }
+
+.about-row {
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.about-text {
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.about-benefits {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  font-size: 14px;
+}
+
+.about-benefits ul {
+  margin-top: 6px;
+  padding-left: 18px;
+}
+
+.about-benefits li { margin-bottom: 4px; }
+
+.about-image { text-align: center; }
+
+.about-image img {
+  max-width: 460px;
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  object-fit: cover;
+}
+
+/* Home “Jak działa” */
+.home-how__title { font-size: 18px; }
+
+.home-how__step {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.home-how__grid { font-size: 14px; }
+
+
+/* =========================================================
+   92. DOKUMENTY (foldery)
+   ========================================================= */
+.docs-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.docs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.docs-folder {
+  text-align: left;
+  background: var(--card);
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform 0.12s ease;
+}
+
+.docs-folder:hover { transform: translateY(-2px); }
+
+.docs-folder__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--brand-50);
+  font-size: 22px;
+}
+
+.docs-folder__name { font-weight: 700; }
+
+@media (max-width: 900px) {
+  .docs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 520px) {
+  .docs-grid { grid-template-columns: 1fr; }
+}
+
+.docs-disclaimer {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* =========================================================
+   94. ZGŁOSZENIA (UI polish / inline stats)
+   ========================================================= */
+.section-wide { width: 100%; }
+
+.zgl-form-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.mini-stats-inline {
+  margin-top: 2px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+@media (max-width: 900px) {
+  .mini-stats-inline { justify-content: flex-start; }
+}
+
+/* Formularz na pełną szerokość */
+.zgloszenia-top {
+  grid-template-columns: 1fr !important;
+}
+
+/* Zgłoszenia: większa typografia nagłówka w tej sekcji */
+[data-view="zgloszenia"] .section {
+  padding: 24px;
+}
+
+[data-view="zgloszenia"] .section h2 {
+  font-size: 28px;
+}
+.zgl-form-title h2 {
+  margin-bottom: 2px;
+}
+
+.zgl-required {
+  font-size: 13px;
+  color: var(--muted);
+}
+.zgl-form-head-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.required-note {
+  font-size: 12px;
+  color: #667085; /* delikatny, „opisowy” kolor */
+}
+
+.req-star {
+  color: #e11d48;  /* mocniejszy akcent dla gwiazdki */
+  font-weight: 600;
+}
+
+/* na węższych ekranach tekst zjedzie pod nagłówek i wyrówna się do lewej */
+@media (max-width: 900px) {
+  .zgl-form-head-right {
+    align-items: flex-start;
+  }
+}
+
+
+/* =========================================================
+   96. KONTAKT (gradient pod formularzem)
+   ========================================================= */
+.contact-highlight {
+  margin-top: 24px;
+  padding: 24px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #4f7cff, #6a7bff);
+}
+
+.contact-highlight h3 {
+  color: #fff;
+  margin: 0;
+}
+
+.contact-highlight .kicker {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Formularz biały na tle */
+.contact-highlight .contact-form {
+  margin-top: 16px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+
+/* =========================================================
+   99. MEDIA QUERIES (global)
+   ========================================================= */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-bottom: 60px;
+  }
+
+  .hero-right { justify-self: flex-start; }
+  .home-tiles-wrapper { margin-top: -32px; }
+}
+
+@media (max-width: 720px) {
+  .row { grid-template-columns: 1fr; }
+  .nav { align-items: flex-start; }
+}
+
+/*
+Jeśli chcesz 2x2 zawsze na desktopie, odkomentuj:
+@media (min-width: 980px) {
+  .grid.grid-home { grid-template-columns: repeat(2, 1fr); }
+}
+*/
+
+/* =========================
+   Formularz zgłoszenia – XML
+   ========================= */
+
+.xml-upload-row {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+
+.xml-upload {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.xml-file-btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px dashed #cbd5f5;
+  background: #f8fafc;
+  font-size: 13px;
+  cursor: pointer;
+  color: #1e293b;
+  white-space: nowrap;
+}
+
+.xml-file-btn:hover {
+  background: #eef2ff;
+}
+
+.xml-file-name {
+  font-size: 12px;
+  color: #64748b;
+  min-width: 140px;
+}
+
+.xml-info {
+  font-size: 11px;
+  color: #64748b;
+}
+/* =========================
+   Widget dostępności
+========================= */
+:root {
+  --font-scale: 1;
+}
+
+/* globalne skalowanie fontu */
+html {
+  font-size: calc(16px * var(--font-scale));
+}
+
+/* pływający przycisk */
+.access-widget {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 999;
+  font-size: 14px;
+}
+
+.access-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
+}
+
+.access-panel {
+  margin-top: 8px;
+  width: 220px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.25);
+  padding: 10px 10px 8px;
+}
+
+.access-panel-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+  padding: 0 4px;
+}
+
+.access-btn {
+  width: 100%;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.access-btn span {
+  font-size: 13px;
+}
+
+.access-btn:hover {
+  background: #f3f4f6;
+}
+
+/* tryb wysokiego kontrastu */
+body.high-contrast {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+body.high-contrast a {
+  color: #ffeb3b !important;
+}
+
+body.high-contrast .section,
+body.high-contrast .card,
+body.high-contrast .login-box,
+body.high-contrast .ticket-card {
+  background: #111827 !important;
+  color: #f9fafb !important;
+}
+
+/* dopasuj przyciski */
+body.high-contrast .btn,
+body.high-contrast button {
+  background: #f59e0b !important;
+  color: #000 !important;
+  border-color: transparent !important;
+}
+.modal-sep{
+  border:0;
+  border-top:1px solid rgba(15,23,42,.08);
+  margin:14px 0;
+}
+
+.feedback-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:8px;
+}
+
+.feedback-title{
+  font-weight:600;
+}
+
+.feedback-text{
+  white-space:pre-line;
+  padding:10px 12px;
+  border-radius:12px;
+  background:rgba(2,6,23,.03);
+  border:1px solid rgba(2,6,23,.06);
+}
+
+.feedback-editor{
+  margin-top:10px;
+}
+
+.feedback-actions{
+  margin-top:10px;
+  display:flex;
+  justify-content:flex-end;
+}
+.login-warning {
+  background: linear-gradient(135deg, #ffeaea, #fff5f5);
+  border: 1px solid #ffb3b3;
+  border-left: 5px solid #e53935;
+  color: #b71c1c;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.login-warning .btn-sm {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+.ticket-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.badge-warn {
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+.badge-public {
+  background: #dcfce7;
+  color: #166534;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+.pill-warn{
+  background:#fef3c7;
+  color:#92400e;
+}
+.pill-ok{
+  background:#dcfce7;
+  color:#166534;
+}
+.btn-publish {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.btn-publish:hover {
+  background: #bbf7d0;
+}
+.pill-warn { background: #f8fafc; color: #b45309; border: 1px solid #fde68a; }
+.pill-ok   { background: #f8fafc; color: #15803d; border: 1px solid #bbf7d0; }
+.pill-anon{
+  background:#e0f2fe;   /* jasny niebieski */
+  color:#075985;        /* granat */
+  border: 1px solid #bae6fd;
+}
+/* czerwony "Usuń" – tylko gdy ma klasę btn-remove */
+.btn-ghost.btn-remove{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
+.btn-ghost.btn-remove:hover{
+  background:#fecaca;
+}
+.xml-help{
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 12px;
+}
+/* =========================================================
+   MODAL: szczegóły zgłoszenia – UI polish
+   ========================================================= */
+
+/* trochę szerszy, przyjemniejszy modal na desktopie */
+.modal {
+  max-width: 640px;
+  width: 100%;
+  padding: 20px 22px 16px 22px;
+}
+
+/* header: tytuł + przycisk bliżej siebie */
+.modal-header {
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-title {
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+/* „podtytuł” (kategoria • lokalizacja • data) */
+#m-sub {
+  font-size: 13px;
+}
+
+/* ciało modala – trochę więcej oddechu */
+.modal-body {
+  padding-top: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* opis zgłoszenia jako wyraźny blok */
+.ticket-desc {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 12px 14px;
+  border: 1px solid #e2e8f0;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/* wiersz „Status / ID” bardziej uporządkowany */
+.ticket-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+/* separator */
+.modal-sep {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 14px 0 12px 0;
+}
+
+/* blok informacji zwrotnej jako karta */
+.feedback {
+  background: #f9fafb;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 12px 14px;
+}
+
+.feedback-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.feedback-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.feedback-text {
+  font-size: 13px;
+  color: #0f172a;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px dashed #e2e8f0;
+  padding: 8px 10px;
+  min-height: 40px;
+}
+
+/* edycja informacji: oddzielona cienką linią */
+.feedback-editor {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed #e2e8f0;
+}
+
+.feedback-editor .input {
+  font-size: 13px;
+}
+
+.feedback-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+/* footer – przyciski przyklejone do prawej */
+.modal-footer {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #e2e8f0;
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* na węższych ekranach modal mniej „szeroki” */
+@media (max-width: 600px) {
+  .modal {
+    margin: 0 10px;
+    padding: 16px 14px 12px 14px;
+  }
+
+  .modal-footer {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+/* --- FIX: textarea w modalu nie może wychodzić poza kontener --- */
+.feedback-editor textarea,
+.feedback-editor .input {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  resize: none;      /* tylko w pionie */
+  overflow-x: hidden;
+}
