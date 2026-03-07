@@ -92,15 +92,17 @@ Frontend odpowiada za prezentację danych oraz komunikację z backendem za pomoc
 
 ## Struktura projektu
 
+```
 mLokalnie/
 │
-├── public/ # Frontend (HTML, CSS, JavaScript, zasoby)
-├── server.js # Konfiguracja serwera Express
-├── db.js # Konfiguracja bazy danych
-├── xml.js # Obsługa generowania XML
-├── seed-users.js # Skrypt tworzący użytkowników testowych
+├── public/            # Frontend (HTML, CSS, JavaScript, zasoby)
+├── server.js          # Konfiguracja serwera Express
+├── db.js              # Konfiguracja bazy danych
+├── xml.js             # Obsługa generowania XML
+├── seed-users.js      # Skrypt tworzący użytkowników testowych
 ├── package.json
 └── .gitignore
+```
 
 
 ---
