@@ -94,13 +94,16 @@ Frontend odpowiada za prezentację danych oraz komunikację z backendem za pomoc
 
 ```
 mLokalnie/
+├── backend/
+│   ├── public/            # Frontend (HTML, CSS, JavaScript)
+│   ├── server.js          # Konfiguracja serwera Express
+│   ├── db.js              # Konfiguracja bazy danych
+│   ├── xml.js             # Obsługa XML
+│   ├── seed-users.js      # Dane testowe
+│   ├── package.json
+│   └── formularze.db
 │
-├── public/            # Frontend (HTML, CSS, JavaScript, zasoby)
-├── server.js          # Konfiguracja serwera Express
-├── db.js              # Konfiguracja bazy danych
-├── xml.js             # Obsługa generowania XML
-├── seed-users.js      # Skrypt tworzący użytkowników testowych
-├── package.json
+├── docs/                  # Zrzuty ekranu i diagramy
 └── .gitignore
 ```
 
@@ -111,6 +114,7 @@ System wykorzystuje relacyjną bazę danych SQLite.
 Główne tabele systemu:
 
 - users
+- wiadomosci
 - zgloszenia
 
 Dane zgłoszenia obejmują m.in.:
